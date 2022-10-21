@@ -1,0 +1,5 @@
+Affiche l'ensemble des résultats de nos requêtes sous formes de "vues".
+
+\template.php -> sert de squelette à l'ensemble des vues.
+
+On appelle cela "temporisation de sortie" en PHP.
