@@ -1,2 +1,4 @@
 index.php va accueillir l'action transmise par l'URL (GET)
 EXEMPLE : "index.php?action=listFilms"
+
+namespace = moyen d'encapsuler des éléments.
