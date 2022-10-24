@@ -5,15 +5,11 @@ use Model\Connect;
 
 class CinemaController {
 
-
-
     public function listFilms() {
 
         $pdo = Connect::seConnecter();
-        $requete=$pdo->query("
-            SELECT titre, annee_sortie
-            FROM film
-        ");
+        $sql = "SELECT titre, anneeSortieFrance FROM film";
+        $requete = $pdo->query($sql);
 
         require "view/listFilms.php";
     }

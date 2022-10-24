@@ -1,6 +1,7 @@
 <?php ob_start(); ?>
 
-<p>Il y a <?= $requete->rowCount() ?> films</p>
+<h1>Liste des films</h1>
+<!-- <p>Il y a <?= $requete->rowCount() ?> films</p> -->
 
 <table>
     <thead>
@@ -14,7 +15,7 @@
             foreach($requete->fetchAll() as $film) { ?>
                 <tr>
                     <td><?= $film["titre"] ?></td>
-                    <td><?= $film["annee_sortie"] ?></td>
+                    <td><?= $film["anneeSortieFrance"] ?></td>
                 </tr>
         <?php    } ?>
     </tbody>

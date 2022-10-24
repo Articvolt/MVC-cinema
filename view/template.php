@@ -9,13 +9,10 @@
 </head>
 
 <body>
-    <nav>
-
-    </nav>
+    <h1>PDO Cinema</h1>
     <div>
         <main>
             <div>
-                <h1>PDO Cinema</h1>
                 <h2><?= $titre_secondaire ?></h2>
                 <?= $contenu ?>
             </div>
