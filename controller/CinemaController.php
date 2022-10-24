@@ -17,4 +17,14 @@ class CinemaController {
 
         require "view/listFilms.php";
     }
+
+    public function listActeurs() {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query("
+            SELECT p.nom, p.prenom
+            FROM personne p
+            inner join acteur a ON p.id_personne = a.id_personne
+        ");
+        require "view/listActeurs.php";
+    }
 }

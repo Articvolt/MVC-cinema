@@ -12,11 +12,10 @@
     </thead>
     <tbody>
         <?php
-            foreach($requete->fetchAll() as $acteurs) { ?>
+            foreach($requete->fetchAll() as $acteur) { ?>
                 <tr>
-                    <td><?= $film["titre"] ?></td>
-                    <td><?= $film["titre"] ?></td>
-                    <td><?= $film["annee_sortie"] ?></td>
+                    <td><?= $acteur["nom"] ?></td>
+                    <td><?= $acteur["prenom"] ?></td>
                 </tr>
         <?php    } ?>
     </tbody>
@@ -24,7 +23,7 @@
 
 <?php
 
-$titre = "Liste des films";
-$titre_secondaire = "Liste des films";
+$titre = "Liste des acteurs";
+$titre_secondaire = "Liste des acteurs";
 $contenu = ob_get_clean();
 require "view/template.php";
