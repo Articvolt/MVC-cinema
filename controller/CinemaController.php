@@ -90,5 +90,22 @@ class CinemaController {
 
         require "view/film.php";
     }
+    public function descriptionActeur($id) {
+        $pdo=Connect::seConnecter();
+        $requete=$pdo->prepare("
+       
+        ");
+        $requete->execute(
+            ["id" => $id]
+        );
+        $requete2=$pdo->prepare("
+
+        ");
+        $requete2->execute(
+            ["id" => $id]
+        );
+
+        require "view/acteur.php";
+    }
 
 }
