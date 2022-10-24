@@ -62,10 +62,15 @@ img {
     margin: 50px;
 }
 
+/* DESCRIPTION FILM */
 .affiche {
     width:300px;
 }
 
 span .synopsis {
     width: 150px;
+}
+
+figcaption {
+    text-align: center;
 }

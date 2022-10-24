@@ -3,11 +3,17 @@
 $film = $requete->fetch();
 
 ?>
+<h1><?= $film["titre"] ?></h1>
 <div class="aside">
     <div>
-        <h1><?= $film["titre"] ?></h1>
-        <p>Année de sortie : <?= $film["anneeSortie"] ?></p>
-        <img class="affiche" src="<?= $film["affiche"] ?>" alt="affiche">
+        
+        
+        <figure>
+            <img class="affiche" src="<?= $film["affiche"] ?>" alt="affiche">
+            <figcaption>
+                <p>Année de sortie : <?= $film["anneeSortie"] ?></p>
+            </figcaption>
+        </figure>
     </div>
     
     <table>
