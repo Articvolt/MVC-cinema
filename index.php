@@ -7,6 +7,8 @@ spl_autoload_register(function ($class_name) {
     include $class_name . '.php';
 });
 
+$id = isset($_GET["id"]) ? $_GET["id"] : "";
+
 $ctrlCinema = new CinemaController();
 
 // En fonction de l'action détectée dans l'URL via la propriété "action", on interagit avec la bonne méthode du controller
@@ -29,8 +31,12 @@ if(isset($_GET["action"])) {
         case "listRoles" :
             $ctrlCinema->listRoles();
             break;
+    // CAS PAR CAS
+        case "film" :
+            $ctrlCinema->descriptionFilm($id);
+            break;
     }
-    // affiche par défaut
+    // PAR DEFAUT
 } else {
     $ctrlCinema->accueil();
 }

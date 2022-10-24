@@ -9,13 +9,14 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
         $requete=$pdo->query("
-        SELECT titre, DATE_FORMAT(anneeSortieFrance, '%Y') 
+        SELECT id_film, titre, DATE_FORMAT(anneeSortieFrance, '%Y') 
         FROM film
         ORDER BY anneeSortieFrance DESC
     ");
         require "view/listFilms.php";
     }
 
+// LISTES
     public function listActeurs() {
         $pdo=Connect::seConnecter();
         $requete=$pdo->query("
@@ -46,7 +47,7 @@ class CinemaController {
         ");
         require "view/listGenres.php";
     }
-    
+
     public function listRoles() {
         $pdo=Connect::seConnecter();
         $requete=$pdo->query("
@@ -60,5 +61,22 @@ class CinemaController {
         require "view/home.php";
     }
 
+// AFFICHER AU DETAIL
+
+    public function descriptionFilm($id) {
+        $pdo=Connect::seConnecter();
+        $requete=$pdo->prepare("
+            SELECT titre, DATE_FORMAT(f.anneeSortieFrance, '%Y') AS anneeSortie, synopsis, affiche, note, SEC_TO_TIME(f.duree *60) AS duree , CONCAT(p.prenom,' ',p.nom) AS realisateur
+            FROM film f
+            INNER JOIN realisateur r ON f.id_realisateur = r.id_realisateur
+            INNER JOIN personne p ON r.id_personne = p.id_personne
+            WHERE f.id_film = :id;
+        ");
+
+        $requete->execute(
+            ["id" => $id]
+        );
+        require "view/film.php";
+    }
 
 }
