@@ -11,6 +11,7 @@
     <header>
         <nav>
             <ul>
+                <li><a href="index.php">accueil</a></li>
                 <li><a href="index.php?action=listFilms">films</a></li>
                 <li><a href="index.php?action=listActeurs">acteurs</a></li>
                 <li><a href="index.php?action=listRealisateurs">realisateurs</a></li>

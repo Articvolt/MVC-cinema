@@ -17,9 +17,14 @@ if(isset($_GET["action"])) {
         case "listFilms" : 
             $ctrlCinema->listFilms(); 
             break;
-        case "listActeurs" : $ctrlCinema->listActeurs(); 
-        break;
+        case "listActeurs" : 
+            $ctrlCinema->listActeurs(); 
+            break;
+        case "listRealisateurs" : 
+            $ctrlCinema->listRealisateurs(); 
+            break;
     }
+    // affiche par défaut
 } else {
-    $ctrlCinema->listFilms();
+    $ctrlCinema->accueil();
 }

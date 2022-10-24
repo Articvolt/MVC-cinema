@@ -26,6 +26,7 @@ class CinemaController {
         ");
         require "view/listActeurs.php";
     }
+    
     public function listRealisateurs() {
         $pdo=Connect::seConnecter();
         $requete=$pdo->query("
@@ -35,5 +36,9 @@ class CinemaController {
             ORDER BY p.dateNaissance DESC
         ");
         require "view/listRealisateurs.php";
+    }
+
+    public function accueil() {
+        require "view/home.php";
     }
 }

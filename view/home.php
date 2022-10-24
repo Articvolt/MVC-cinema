@@ -1,12 +1,15 @@
 <?php ob_start(); ?>
-
-<h1>HOME</h1>
-
-<p></p>
+<section class="aside">
+    <div>
+        <p>Réalisation d'un "design patern" sur l'exercice "cinema".</p>
+        <p>L'objectif est de pouvoir afficher la base de données via des requêtes SQL via PDO.</p>
+    </div>
+    <img src="public/img/cinema.jpg" alt="cinema">
+</section>
 
 <?php
 
-$titre = "Home";
-$titre_secondaire = "Liste des acteurs";
+$titre = "Accueil";
+$titre_secondaire = "ENONCE DE L'EXERCICE";
 $contenu = ob_get_clean();
 require "view/template.php";
