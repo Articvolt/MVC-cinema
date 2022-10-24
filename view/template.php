@@ -11,9 +11,9 @@
     <header>
         <nav>
             <ul>
-                <li>films</li>
-                <li>acteurs</li>
-                <li>realisateurs</li>
+                <li><a href="index.php?action=listFilms">films</a></li>
+                <li><a href="index.php?action=listActeurs">acteurs</a></li>
+                <li><a href="index.php?action=listRealisateurs">realisateurs</a></li>
             </ul>
         </nav>
     </header>
