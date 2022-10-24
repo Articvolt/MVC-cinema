@@ -3,11 +3,10 @@
 $film = $requete->fetch();
 
 ?>
-<h1><?= $film["titre"] ?></h1>
+
 <div class="aside">
     <div>
-        
-        
+        <h1><?= $film["titre"] ?></h1>
         <figure>
             <img class="affiche" src="<?= $film["affiche"] ?>" alt="affiche">
             <figcaption>
@@ -32,6 +31,11 @@ $film = $requete->fetch();
                 <td><?= $film["note"] ?> / 5</td>
                 <td><?= $film["duree"] ?></td>
                 <td><?= $film["realisateur"] ?></td>
+                <td class="castingList">
+                        <?php foreach($requete2->fetchAll() as $casting) { ?>
+                        <?= $casting["listActeur"] ?> dans le rôle de  "<?= $casting["nomRole"] ?>"<br><br>
+                        <?php } ?>
+                </td>
             </tr>
         </tbody>
     </table>

@@ -12,8 +12,8 @@ nav ul {
 nav ul li {
     list-style-type: none;
     border:1px solid black;
-    padding:  5px 1rem;
-    margin: 20px;
+    padding:  5px 15px;
+    margin: 10px;
     border-radius: 5px;
     background-color: aliceblue;
 }
@@ -41,7 +41,7 @@ th,td {
 }
 
 th {
-    width: 300px;
+    width: 250px;
 }
 
 table {
@@ -73,4 +73,16 @@ span .synopsis {
 
 figcaption {
     text-align: center;
+}
+
+.castingList {
+    background-color: aliceblue;
+}
+
+.castingList li {
+    text-decoration: none;
+    background-color: aliceblue;
+    list-style-type: none;
+    text-align: justify;
+    align-items: center;
 }
