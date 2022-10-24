@@ -10,7 +10,7 @@ class CinemaController {
     public function listFilms() {
 
         $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
+        $requete=$pdo->query("
             SELECT titre, annee_sortie
             FROM film
         ");
@@ -19,8 +19,8 @@ class CinemaController {
     }
 
     public function listActeurs() {
-        $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
+        $pdo=Connect::seConnecter();
+        $requete=$pdo->query("
             SELECT p.nom, p.prenom
             FROM personne p
             inner join acteur a ON p.id_personne = a.id_personne

@@ -14,8 +14,10 @@ abstract class Connect {
         try {
             return new \PDO (
                 "mysql:host".self::HOST.";dbname=".self::DB.";charset=utf8",self::USER, self::PASS);
+                echo "connexion réussie";
         } catch(\PDOException $ex) {
             return $ex->getMessage();
+            echo "connexion failed";
         }
     }
 }
