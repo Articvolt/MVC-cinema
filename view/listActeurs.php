@@ -1,8 +1,10 @@
 <?php ob_start(); ?>
 
-<p>Il y a <?= $requete->rowCount() ?> acteurs</p>
 
-<table>
+<div class="aside">
+    <p>Il y a <?= $requete->rowCount() ?> acteurs enregistrés</p>
+
+    <table>
     <thead>
         <tr>
             <th>NOM</th>
@@ -16,10 +18,13 @@
                 <tr>
                     <td><?= $acteur["nom"] ?></td>
                     <td><?= $acteur["prenom"] ?></td>
+                    <td><?= $acteur["DATE_FORMAT(p.dateNaissance, '%d/%m/%Y')"] ?></td>
                 </tr>
         <?php    } ?>
     </tbody>
 </table>
+</div>
+
 
 <?php
 

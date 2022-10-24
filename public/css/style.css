@@ -1,3 +1,52 @@
-body {
-    background: red;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    background-color: rgb(235, 235, 235);
 }
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    list-style-type: none;
+    border:1px solid black;
+    padding:  5px 1rem;
+    margin: 20px;
+    border-radius: 5px;
+    background-color: aliceblue;
+}
+
+/* BLOC FONCTION AFFICHAGE */
+h2 {
+    text-align: center;
+    text-decoration: underline;
+    font-size: 35px;
+    margin: 20px;
+
+}
+th,td {
+    border: 1px solid black; 
+    padding: 1rem 10px;
+    text-align: center;
+    background-color: aliceblue;
+}
+
+th {
+    width: 300px;
+}
+
+table {
+    border-collapse: collapse;
+    /* margin: auto; */
+    justify-content: center;
+}
+
+.aside {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
