@@ -26,7 +26,7 @@ class CinemaController {
         ");
         require "view/listActeurs.php";
     }
-    
+
     public function listRealisateurs() {
         $pdo=Connect::seConnecter();
         $requete=$pdo->query("
@@ -38,7 +38,27 @@ class CinemaController {
         require "view/listRealisateurs.php";
     }
 
+    public function listGenres() {
+        $pdo=Connect::seConnecter();
+        $requete=$pdo->query("
+            SELECT nomGenre
+            FROM genre
+        ");
+        require "view/listGenres.php";
+    }
+    
+    public function listRoles() {
+        $pdo=Connect::seConnecter();
+        $requete=$pdo->query("
+            SELECT nomRole
+            FROM role
+        ");
+        require "view/listRoles.php";
+    }
+
     public function accueil() {
         require "view/home.php";
     }
+
+
 }
