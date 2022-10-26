@@ -6,11 +6,11 @@ $acteur = $requete->fetch();
 
 <div class="aside">
     <div>
-        <h1><?= $acteur["identité"] ?></h1>
+        <h1><?= $acteur["identite"] ?></h1>
         <figure>
             <img class="affiche" src="<?= $acteur["photo"] ?>" alt="photo">
             <figcaption>
-                <p>Date de naissance : <?= $acteur["DATE_FORMAT(p.dateNaissance, '%d/%m/%Y')"] ?></p>
+                <p>Date de naissance : <?= $acteur["date"] ?></p>
             </figcaption>
         </figure>
     </div>
@@ -18,12 +18,13 @@ $acteur = $requete->fetch();
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th></th>
+                <th>FILM</th>
+                <th>ROLE</th>
             </tr>
         </thead>
         <tbody>
             <tr>
+                <td></td>
                 <td></td>
             </tr>
         </tbody>

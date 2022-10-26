@@ -15,8 +15,8 @@
         <?php
             foreach($requete->fetchAll() as $acteur) { ?>
                 <tr>
-                    <td><a href="index.php?action=acteur&id=<?=$acteur["identité"]?>"><?= $acteur["identité"]?></a></td>
-                    <td><?= $acteur["DATE_FORMAT(p.dateNaissance, '%d/%m/%Y')"] ?></td>
+                    <td><a href="index.php?action=acteur&id=<?=$acteur["id_personne"]?>"> <?= $acteur["identité"]?></a></td>
+                    <td><?= $acteur["date"] ?></td>
                 </tr>
         <?php    } ?>
     </tbody>
