@@ -10,6 +10,7 @@ $acteur = $requete->fetch();
         <figure>
             <img class="affiche" src="<?= $acteur["photo"] ?>" alt="photo">
             <figcaption>
+                <p>sexe : <?= $acteur["sexe"] ?></p>
                 <p>Date de naissance : <?= $acteur["date"] ?></p>
             </figcaption>
         </figure>

@@ -7,8 +7,7 @@
     <table>
     <thead>
         <tr>
-            <th>NOM</th>
-            <th>PRENOM</th>
+            <th>NOM PRENOM</th>
             <th>DATE DE NAISSANCE</th>
         </tr>
     </thead>
@@ -16,8 +15,7 @@
         <?php
             foreach($requete->fetchAll() as $realisateur) { ?>
                 <tr>
-                    <td><?= $realisateur["nom"] ?></td>
-                    <td><?= $realisateur["prenom"] ?></td>
+                    <td><?= $realisateur["identite"] ?></td>
                     <td><?= $realisateur["DATE_FORMAT(p.dateNaissance, '%d/%m/%Y')"] ?></td>
                 </tr>
         <?php    } ?>

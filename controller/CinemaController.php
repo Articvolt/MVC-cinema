@@ -31,7 +31,7 @@ class CinemaController {
     public function listRealisateurs() {
         $pdo=Connect::seConnecter();
         $requete=$pdo->query("
-            SELECT p.nom, p.prenom,DATE_FORMAT(p.dateNaissance, '%d/%m/%Y') 
+            SELECT r.id_personne, CONCAT(p.prenom,' ',p.nom) AS identite, DATE_FORMAT(p.dateNaissance, '%d/%m/%Y') 
             FROM personne p
             inner join realisateur r ON p.id_personne = r.id_personne
             ORDER BY p.dateNaissance DESC
@@ -93,7 +93,7 @@ class CinemaController {
     public function descriptionActeur($id) {
         $pdo=Connect::seConnecter();
         $requete=$pdo->prepare("
-            SELECT a.id_personne, CONCAT(prenom,' ',nom) AS identite, DATE_FORMAT(dateNaissance, '%d/%m/%Y') AS date, photo
+            SELECT a.id_personne, sexe, CONCAT(prenom,' ',nom) AS identite, DATE_FORMAT(dateNaissance, '%d/%m/%Y') AS date, photo
             FROM personne p
             INNER JOIN acteur a ON p.id_personne = a.id_personne
             WHERE a.id_personne = :id;
@@ -108,7 +108,8 @@ class CinemaController {
         INNER JOIN acteur a ON j.id_acteur = a.id_acteur
         INNER JOIN personne p ON a.id_personne = p.id_personne
         INNER JOIN role r ON j.id_role = r.id_role
-        WHERE a.id_personne = :id;
+        WHERE a.id_personne = :id 
+        ORDER BY anneeSortie DESC
         ");
         $requete2->execute(
             ["id" => $id]
