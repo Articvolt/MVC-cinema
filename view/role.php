@@ -1,13 +1,12 @@
 <?php
 
-$acteur = $requete->fetch();
+$role = $requete->fetch();
 
 ?>
 
 <div class="aside">
     <div>
-        <h1><?= $acteur["identite"] ?></h1>
-        <img class="affiche" src="<?= $acteur["photo"] ?>" alt="photo">
+        <h1><?= $role["nomRole"] ?></h1>
     </div>
     
     <table>
@@ -19,11 +18,11 @@ $acteur = $requete->fetch();
             </tr>
         </thead>
         <tbody>
-            <?php foreach($requete2->fetchAll() as $casting) { ?>
+            <?php foreach($requete->fetchAll() as $role) { ?>
             <tr>
-                <td><?= $casting["titre"] ?></td>
-                <td><?= $casting["anneeSortie"] ?></td>
-                <td><?= $casting["nomRole"] ?></td>
+                <td><?= $role["titre"] ?></td>
+                <td><?= $role["anneeSortie"] ?></td>
+                <td><?= $role["identite"] ?></td>
             </tr>
             <?php } ?>
         </tbody>

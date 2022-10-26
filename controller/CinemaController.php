@@ -51,7 +51,7 @@ class CinemaController {
     public function listRoles() {
         $pdo=Connect::seConnecter();
         $requete=$pdo->query("
-            SELECT nomRole
+            SELECT nomRole, id_role
             FROM role
         ");
         require "view/listRoles.php";
@@ -163,7 +163,13 @@ class CinemaController {
     public function descriptionRole($id) {
         $pdo=Connect::seConnecter();
         $requete=$pdo->prepare("
-            
+        SELECT  r.id_role , f.titre, CONCAT(p.prenom,' ',p.nom) AS identite, r.nomRole, DATE_FORMAT(f.anneeSortieFrance, '%Y') AS anneeSortie
+        FROM role r
+		INNER JOIN jouer j ON j.id_role = r.id_role
+        INNER JOIN film f ON j.id_film = f.id_film       
+        INNER JOIN acteur a ON j.id_acteur = a.id_acteur
+        INNER JOIN personne p ON a.id_personne = p.id_personne  
+        WHERE r.id_role = :id
         ");
         $requete->execute(
             ["id" => $id]
