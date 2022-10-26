@@ -15,7 +15,7 @@
         <?php
             foreach($requete->fetchAll() as $realisateur) { ?>
                 <tr>
-                    <td><?= $realisateur["identite"] ?></td>
+                    <td><a href="index.php?action=realisateur&id=<?=$realisateur["id_personne"]?>"><?= $realisateur["identite"] ?></a></td>
                     <td><?= $realisateur["DATE_FORMAT(p.dateNaissance, '%d/%m/%Y')"] ?></td>
                 </tr>
         <?php    } ?>

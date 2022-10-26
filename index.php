@@ -38,6 +38,9 @@ if(isset($_GET["action"])) {
         case "acteur" :
             $ctrlCinema->descriptionActeur($id);
             break;
+        case "realisateur" :
+            $ctrlCinema->descriptionRealisateur($id);
+            break;
     }
     // PAR DEFAUT
 } else {
