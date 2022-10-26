@@ -1,7 +1,6 @@
 <?php 
 ob_start();
 $acteur = $requete->fetch();
-
 ?>
 
 <div class="aside">
