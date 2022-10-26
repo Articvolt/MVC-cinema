@@ -7,8 +7,7 @@
     <table>
     <thead>
         <tr>
-            <th>NOM</th>
-            <th>PRENOM</th>
+            <th>NOM PRENOM</th>
             <th>DATE DE NAISSANCE</th>
         </tr>
     </thead>
@@ -16,8 +15,7 @@
         <?php
             foreach($requete->fetchAll() as $acteur) { ?>
                 <tr>
-                    <td><?= $acteur["nom"] ?></td>
-                    <td><?= $acteur["prenom"] ?></td>
+                    <td><a href="index.php?action=acteur&id=<?=$acteur["identité"]?>"><?= $acteur["identité"]?></a></td>
                     <td><?= $acteur["DATE_FORMAT(p.dateNaissance, '%d/%m/%Y')"] ?></td>
                 </tr>
         <?php    } ?>

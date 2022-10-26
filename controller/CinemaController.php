@@ -20,7 +20,7 @@ class CinemaController {
     public function listActeurs() {
         $pdo=Connect::seConnecter();
         $requete=$pdo->query("
-            SELECT p.nom, p.prenom,DATE_FORMAT(p.dateNaissance, '%d/%m/%Y') 
+            SELECT CONCAT(p.prenom,' ',p.nom) AS identité ,DATE_FORMAT(p.dateNaissance, '%d/%m/%Y') 
             FROM personne p
             inner join acteur a ON p.id_personne = a.id_personne
             ORDER BY p.dateNaissance DESC
@@ -93,17 +93,20 @@ class CinemaController {
     public function descriptionActeur($id) {
         $pdo=Connect::seConnecter();
         $requete=$pdo->prepare("
-       
+            SELECT CONCAT(p.prenom,' ',p.nom) AS identité, DATE_FORMAT(p.dateNaissance, '%d/%m/%Y'), photo
+            FROM personne p
+            INNER JOIN acteur a ON p.id_personne = a.id_personne
+            WHERE a.id_acteur = :id;
         ");
         $requete->execute(
             ["id" => $id]
         );
-        $requete2=$pdo->prepare("
+        // $requete2=$pdo->prepare("
 
-        ");
-        $requete2->execute(
-            ["id" => $id]
-        );
+        // ");
+        // $requete2->execute(
+        //     ["id" => $id]
+        // );
 
         require "view/acteur.php";
     }

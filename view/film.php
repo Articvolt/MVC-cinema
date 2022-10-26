@@ -44,7 +44,7 @@ $film = $requete->fetch();
 
 <?php
 
-$titre = "Détail d'un film";
-$titre_secondaire = "Détail d'un film";
+$titre = "Détail d'un acteur";
+$titre_secondaire = "Détail d'un acteur";
 $contenu = ob_get_clean();
 require "view/template.php";

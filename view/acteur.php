@@ -1,16 +1,16 @@
 <?php
 
-$film = $requete->fetch();
+$acteur = $requete->fetch();
 
 ?>
 
 <div class="aside">
     <div>
-        <h1><?= $film["titre"] ?></h1>
+        <h1><?= $acteur["identité"] ?></h1>
         <figure>
-            <img class="affiche" src="<?= $film["affiche"] ?>" alt="affiche">
+            <img class="affiche" src="<?= $acteur["photo"] ?>" alt="photo">
             <figcaption>
-                <p>Année de sortie : <?= $film["anneeSortie"] ?></p>
+                <p>Date de naissance : <?= $acteur["DATE_FORMAT(p.dateNaissance, '%d/%m/%Y')"] ?></p>
             </figcaption>
         </figure>
     </div>
@@ -18,24 +18,13 @@ $film = $requete->fetch();
     <table>
         <thead>
             <tr>
-                <th>SYNOPSIS</th>
-                <th>NOTE</th>
-                <th>DUREE</th>
-                <th>REALISATEUR</th>
-                <th>CASTING</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td><?= $film["synopsis"] ?></td>
-                <td><?= $film["note"] ?> / 5</td>
-                <td><?= $film["duree"] ?></td>
-                <td><?= $film["realisateur"] ?></td>
-                <td class="castingList">
-                        <?php foreach($requete2->fetchAll() as $casting) { ?>
-                        <?= $casting["listActeur"] ?> dans le rôle de  "<?= $casting["nomRole"] ?>"<br><br>
-                        <?php } ?>
-                </td>
+                <td></td>
             </tr>
         </tbody>
     </table>
@@ -45,6 +34,6 @@ $film = $requete->fetch();
 <?php
 
 $titre = "Détail d'un acteur";
-$titre_secondaire = "Détail d'un acteur";
+$titre_secondaire = "Filmographie";
 $contenu = ob_get_clean();
 require "view/template.php";
