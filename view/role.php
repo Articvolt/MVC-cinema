@@ -1,19 +1,13 @@
 <?php
 
-$realisateur = $requete->fetch();
+$acteur = $requete->fetch();
 
 ?>
 
 <div class="aside">
     <div>
-        <h1><?= $realisateur["identite"] ?></h1>
-        <figure>
-            <img class="affiche" src="<?= $realisateur["photo"] ?>" alt="photo">
-            <figcaption>
-                <p>sexe : <?= $realisateur["sexe"] ?></p>
-                <p>Date de naissance : <?= $realisateur["date"] ?></p>
-            </figcaption>
-        </figure>
+        <h1><?= $acteur["identite"] ?></h1>
+        <img class="affiche" src="<?= $acteur["photo"] ?>" alt="photo">
     </div>
     
     <table>
@@ -21,6 +15,7 @@ $realisateur = $requete->fetch();
             <tr>
                 <th>FILM</th>
                 <th>ANNEE DE SORTIE</th>
+                <th>ROLE</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +23,7 @@ $realisateur = $requete->fetch();
             <tr>
                 <td><?= $casting["titre"] ?></td>
                 <td><?= $casting["anneeSortie"] ?></td>
+                <td><?= $casting["nomRole"] ?></td>
             </tr>
             <?php } ?>
         </tbody>
@@ -37,7 +33,7 @@ $realisateur = $requete->fetch();
 
 <?php
 
-$titre = "Détail d'un réalisateur";
-$titre_secondaire = "Filmographie";
+$titre = "Détail d'un role";
+$titre_secondaire = "role";
 $contenu = ob_get_clean();
 require "view/template.php";

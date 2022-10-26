@@ -14,7 +14,7 @@
         <?php
             foreach($requete->fetchAll() as $genre) { ?>
                 <tr>
-                    <td><?= $genre["nomGenre"] ?></td>
+                    <td><a href="index.php?action=genre&id=<?= $genre["id_genre"] ?>"><?= $genre["nomGenre"] ?></a></td>
                 </tr>
         <?php    } ?>
     </tbody>

@@ -42,7 +42,7 @@ class CinemaController {
     public function listGenres() {
         $pdo=Connect::seConnecter();
         $requete=$pdo->query("
-            SELECT nomGenre
+            SELECT nomGenre, id_genre
             FROM genre
         ");
         require "view/listGenres.php";
@@ -143,6 +143,32 @@ class CinemaController {
         );
 
         require "view/realisateur.php";
+    }
+
+    public function descriptionGenre($id) {
+        $pdo=Connect::seConnecter();
+        $requete=$pdo->prepare("
+            SELECT  g.id_genre, titre, nomGenre, g.photo
+            FROM genre g
+            LEFT JOIN associer a ON g.id_genre = a.id_genre
+            LEFT JOIN film f ON a.id_film = f.id_film
+            WHERE  g.id_genre = :id
+        ");
+        $requete->execute(
+            ["id" => $id]
+        );
+        require "view/genre.php";
+    }
+
+    public function descriptionRole($id) {
+        $pdo=Connect::seConnecter();
+        $requete=$pdo->prepare("
+            
+        ");
+        $requete->execute(
+            ["id" => $id]
+        );
+        require "view/role.php";
     }
 
 }
