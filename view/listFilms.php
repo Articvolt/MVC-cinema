@@ -1,4 +1,6 @@
-<?php ob_start(); ?>
+<?php 
+ob_start();
+?>
 
 <div class=aside>
     <p>Il y a <?= $requete->rowCount() ?> films enregistrés</p>

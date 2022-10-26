@@ -1,7 +1,7 @@
+<?php ob_start(); ?>
+
 <?php
-
 $realisateur = $requete->fetch();
-
 ?>
 
 <div class="aside">

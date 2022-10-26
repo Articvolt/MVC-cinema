@@ -1,7 +1,6 @@
-<?php
-
+<?php 
+ob_start();
 $film = $requete->fetch();
-
 ?>
 
 <div class="aside">

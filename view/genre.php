@@ -1,7 +1,6 @@
-<?php
-
+<?php 
+ob_start(); 
 $genre = $requete->fetch();
-
 ?>
 
 <div class="aside">

@@ -193,4 +193,25 @@ class CinemaController {
         require "view/role.php";
     }
 
+    // FORMULAIRE
+
+
+    public function ajoutGenre() {
+        $pdo=Connect::seConnecter();
+        $requete=$pdo->prepare("
+
+        ");
+        $requete->execute();
+        require "view/formulaire.php";
+    }
+
+    public function ajoutRole() {
+        $pdo=Connect::seConnecter();
+        $requete=$pdo->prepare("
+
+        ");
+        $requete->execute();
+        require "view/formulaire.php";
+    }
+
 }

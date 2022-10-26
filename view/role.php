@@ -1,7 +1,6 @@
-<?php
-
+<?php 
+ob_start();
 $role = $requete->fetch();
-
 ?>
 
 <div class="aside">

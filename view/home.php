@@ -1,4 +1,7 @@
-<?php ob_start(); ?>
+<?php 
+ob_start(); 
+?>
+
 <section class="aside">
     <div>
         <p>Réalisation d'un "design patern" sur l'exercice "cinema".</p>

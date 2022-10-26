@@ -1,5 +1,5 @@
-<?php
-
+<?php 
+ob_start();
 $acteur = $requete->fetch();
 
 ?>
