@@ -19,14 +19,18 @@ $acteur = $requete->fetch();
         <thead>
             <tr>
                 <th>FILM</th>
+                <th>ANNEE DE SORTIE</th>
                 <th>ROLE</th>
             </tr>
         </thead>
         <tbody>
+            <?php foreach($requete2->fetchAll() as $casting) { ?>
             <tr>
-                <td></td>
-                <td></td>
+                <td><?= $casting["titre"] ?></td>
+                <td><?= $casting["anneeSortie"] ?></td>
+                <td><?= $casting["nomRole"] ?></td>
             </tr>
+            <?php } ?>
         </tbody>
     </table>
 </div>

@@ -101,12 +101,18 @@ class CinemaController {
         $requete->execute(
             ["id" => $id]
         );
-        // $requete2=$pdo->prepare("
-
-        // ");
-        // $requete2->execute(
-        //     ["id" => $id]
-        // );
+        $requete2=$pdo->prepare("
+        SELECT  r.nomRole AS nomRole, f.titre, DATE_FORMAT(f.anneeSortieFrance, '%Y') AS anneeSortie
+        FROM film f
+        INNER JOIN jouer j ON j.id_film = f.id_film
+        INNER JOIN acteur a ON j.id_acteur = a.id_acteur
+        INNER JOIN personne p ON a.id_personne = p.id_personne
+        INNER JOIN role r ON j.id_role = r.id_role
+        WHERE a.id_personne = :id;
+        ");
+        $requete2->execute(
+            ["id" => $id]
+        );
 
         require "view/acteur.php";
     }
