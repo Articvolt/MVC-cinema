@@ -148,13 +148,21 @@ class CinemaController {
     public function descriptionGenre($id) {
         $pdo=Connect::seConnecter();
         $requete=$pdo->prepare("
-            SELECT  g.id_genre, titre, nomGenre, g.photo
+            SELECT  g.id_genre, nomGenre, photo
+            FROM genre g
+            WHERE  g.id_genre = :id
+        ");
+        $requete->execute(
+            ["id" => $id]
+        );
+        $requete2=$pdo->prepare("
+            SELECT  g.id_genre, titre
             FROM genre g
             LEFT JOIN associer a ON g.id_genre = a.id_genre
             LEFT JOIN film f ON a.id_film = f.id_film
             WHERE  g.id_genre = :id
         ");
-        $requete->execute(
+        $requete2->execute(
             ["id" => $id]
         );
         require "view/genre.php";
@@ -163,7 +171,15 @@ class CinemaController {
     public function descriptionRole($id) {
         $pdo=Connect::seConnecter();
         $requete=$pdo->prepare("
-        SELECT  r.id_role , f.titre, CONCAT(p.prenom,' ',p.nom) AS identite, r.nomRole, DATE_FORMAT(f.anneeSortieFrance, '%Y') AS anneeSortie
+        SELECT  r.id_role , r.nomRole
+        FROM role r 
+        WHERE r.id_role = :id
+        ");
+        $requete->execute(
+            ["id" => $id]
+        );
+        $requete2=$pdo->prepare("
+        SELECT  r.id_role, f.titre, CONCAT(p.prenom,' ',p.nom) AS identite, DATE_FORMAT(f.anneeSortieFrance, '%Y') AS anneeSortie
         FROM role r
 		INNER JOIN jouer j ON j.id_role = r.id_role
         INNER JOIN film f ON j.id_film = f.id_film       
@@ -171,7 +187,7 @@ class CinemaController {
         INNER JOIN personne p ON a.id_personne = p.id_personne  
         WHERE r.id_role = :id
         ");
-        $requete->execute(
+        $requete2->execute(
             ["id" => $id]
         );
         require "view/role.php";

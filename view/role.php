@@ -18,11 +18,11 @@ $role = $requete->fetch();
             </tr>
         </thead>
         <tbody>
-            <?php foreach($requete->fetchAll() as $role) { ?>
+            <?php foreach($requete2->fetchAll() as $roles) { ?>
             <tr>
-                <td><?= $role["titre"] ?></td>
-                <td><?= $role["anneeSortie"] ?></td>
-                <td><?= $role["identite"] ?></td>
+                <td><?= $roles["titre"] ?></td>
+                <td><?= $roles["anneeSortie"] ?></td>
+                <td><?= $roles["identite"] ?></td>
             </tr>
             <?php } ?>
         </tbody>

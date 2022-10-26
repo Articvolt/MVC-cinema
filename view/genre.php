@@ -18,7 +18,7 @@ $genre = $requete->fetch();
             </tr>
         </thead>
         <tbody>
-            <?php foreach($requete->fetchAll() as $casting) { ?>
+            <?php foreach($requete2->fetchAll() as $casting) { ?>
             <tr>
                 <td><?= $casting["titre"] ?></td>
             </tr>
