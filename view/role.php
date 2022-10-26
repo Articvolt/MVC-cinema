@@ -14,7 +14,7 @@ $role = $requete->fetch();
             <tr>
                 <th>FILM</th>
                 <th>ANNEE DE SORTIE</th>
-                <th>ROLE</th>
+                <th>Acteur</th>
             </tr>
         </thead>
         <tbody>
