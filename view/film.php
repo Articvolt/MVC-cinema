@@ -32,7 +32,7 @@ $film = $requete->fetch();
                 <td><a href="index.php?action=realisateur&id=<?=$film["id_personne"]?>"><?= $film["realisateur"] ?></a></td>
                 <td class="castingList">
                         <?php foreach($requete2->fetchAll() as $casting) { ?>
-                        <?= $casting["listActeur"] ?> dans le rôle de  "<?= $casting["nomRole"] ?>"<br><br>
+                            <a href="index.php?action=acteur&id=<?=$casting["id_personne"]?>"><?= $casting["listActeur"] ?></a> dans le rôle de  "<?= $casting["nomRole"] ?>"<br><br>
                         <?php } ?>
                 </td>
             </tr>
