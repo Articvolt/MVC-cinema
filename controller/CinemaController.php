@@ -259,14 +259,6 @@ class CinemaController {
             if($dateDeces == '') {
                 $dateDeces = NULL;
             }
-            // var_dump($dateDeces); die;
-            // var_dump($nom);
-            // var_dump($prenom);
-            // var_dump($sexe);
-            // var_dump($dateNaissance);
-            // var_dump($dateDeces);
-            // die;
-
             // si les filtres sont valides
             if($nom && $prenom && $sexe && $dateNaissance) {
                 // connexion et insertion (prepare et execute)
