@@ -86,3 +86,17 @@ figcaption {
     text-align: justify;
     align-items: center;
 }
+
+/* FORMULAIRE */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    align-items: center;
+    margin: auto;
+}
+
+input {
+    padding: 10px 20px;
+}
