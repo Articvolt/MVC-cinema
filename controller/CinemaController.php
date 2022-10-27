@@ -156,7 +156,7 @@ class CinemaController {
             ["id" => $id]
         );
         $requete2=$pdo->prepare("
-            SELECT  g.id_genre, titre
+            SELECT  g.id_genre, titre, f.id_film
             FROM genre g
             LEFT JOIN associer a ON g.id_genre = a.id_genre
             LEFT JOIN film f ON a.id_film = f.id_film

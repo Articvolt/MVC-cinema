@@ -19,7 +19,7 @@ $genre = $requete->fetch();
         <tbody>
             <?php foreach($requete2->fetchAll() as $casting) { ?>
             <tr>
-                <td><?= $casting["titre"] ?></td>
+                <td><a href="index.php?action=film&id=<?=$casting["id_film"]?>"><?= $casting["titre"] ?></a></td>
             </tr>
             <?php } ?>
         </tbody>
