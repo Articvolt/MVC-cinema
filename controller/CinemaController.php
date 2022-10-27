@@ -250,31 +250,50 @@ class CinemaController {
     public function ajoutActeur() {
         if(isset($_POST["submit"])) {
             // filtres d'assainissement
-            $photo = filter_input(INPUT_POST, 'photo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            // $photo = filter_input(INPUT_POST, 'photo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $sexe = filter_input(INPUT_POST, 'sexe', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $dateNaissance = filter_input(INPUT_POST, 'dateNaissance', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $dateDeces = filter_input(INPUT_POST, 'dateDeces', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $dateDeces = filter_input(INPUT_POST, 'dateMort', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            if($dateDeces == '') {
+                $dateDeces = NULL;
+            }
+            // var_dump($dateDeces); die;
+            // var_dump($nom);
+            // var_dump($prenom);
+            // var_dump($sexe);
+            // var_dump($dateNaissance);
+            // var_dump($dateDeces);
+            // die;
 
             // si les filtres sont valides
-            if($photo && $nom && $prenom && $sexe && $dateNaissance && $dateDeces) {
+            if($nom && $prenom && $sexe && $dateNaissance) {
                 // connexion et insertion (prepare et execute)
                 $pdo=Connect::seConnecter();
                 $requete=$pdo->prepare("
-                    INSERT INTO personne (photo, nom, prenom, sexe, dateNaissance, dateDeces) 
-                    VALUES (:photo, :nom, :prenom, :sexe, :dateNaissance, :dateDeces)
+                INSERT INTO personne (nom, prenom, sexe, dateNaissance, dateDeces) 
+                VALUES (:nom, :prenom, :sexe, :dateNaissance, :dateDeces)
                 ");
                 $requete->execute([
-                    ":photo" => $photo,
+                    // ":photo" => $photo,
                     ":nom" => $nom,
                     ":prenom" => $prenom,
                     ":sexe" => $sexe,
                     ":dateNaissance" => $dateNaissance,
-                    ":dateDeces" => $dateDeces
+                    ":dateDeces" => NULL
                 ]);
-            
-            
+
+                $id_personne = $pdo->lastInsertId();
+                $requete2=$pdo->prepare("
+                INSERT INTO acteur (id_personne) 
+                VALUES (:id_personne)
+                ");
+                $requete2->execute([
+                    'id_personne' => $id_personne
+                ]);
+
+
                 // redirection vers la liste des roles
                 header("Location: index.php?action=listActeurs"); die;
             }

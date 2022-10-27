@@ -26,11 +26,11 @@ ob_start();
     <fieldset>
         <legend>Choix du sexe</legend>
         <div>
-            <input type="radio" name="sexe" id="M">
+            <input type="radio" name="sexe" id="M" value="M">
             <label for="M">M</label>
         </div>
         <div>
-            <input type="radio" name="sexe" id="F">
+            <input type="radio" name="sexe" id="F" value="F">
             <label for="F">F</label>
         </div>
     </fieldset>
