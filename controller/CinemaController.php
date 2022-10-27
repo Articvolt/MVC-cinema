@@ -195,13 +195,33 @@ class CinemaController {
 
     // FORMULAIRE
 
+    public function formulaire() {
+        require "view/formulaire.php";
+    }
 
     public function ajoutGenre() {
-        $pdo=Connect::seConnecter();
-        $requete=$pdo->prepare("
-
-        ");
-        $requete->execute();
+        
+        // si on soumet le formulaire
+        if(isset($_POST["submit"])) {
+            // filtres d'assainissement
+            $nomGenre = filter_input(INPUT_POST, 'nomGenre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $photo = filter_input(INPUT_POST, 'photo', FILTER_VALIDATE_URL);
+            
+            // si les filtres sont valides
+            if($nomGenre && $photo) {
+                // connexion et insertion (prepare et execute)
+                $pdo=Connect::seConnecter();
+                $requete=$pdo->prepare("
+                    INSERT INTO genre (nomGenre, photo) VALUES (:nomGenre , :photo)
+                ");
+                $requete->execute([
+                    ":nomGenre" => $nomGenre,
+                    ":photo" => $photo
+                ]);
+                // redirection vers la liste des genres
+                header("Location: index.php?action=listGenres"); die;
+            }
+        }
         require "view/formulaire.php";
     }
 

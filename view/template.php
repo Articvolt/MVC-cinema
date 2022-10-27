@@ -17,7 +17,7 @@
                 <li><a href="index.php?action=listRealisateurs">realisateurs</a></li>
                 <li><a href="index.php?action=listGenres">genres</a></li>
                 <li><a href="index.php?action=listRoles">roles</a></li>
-                <li><a href="index.php?action=addGenre">ajouts</a></li>
+                <li><a href="index.php?action=formulaire">ajouts</a></li>
             </ul>
         </nav>
     </header>

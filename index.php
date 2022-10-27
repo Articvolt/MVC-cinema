@@ -48,6 +48,9 @@ if(isset($_GET["action"])) {
             $ctrlCinema->descriptionRole($id);
             break;
     // FORMULAIRE
+            case "formulaire":
+                $ctrlCinema->formulaire();
+            break;
             case "addGenre" :
                 $ctrlCinema->ajoutGenre();
             break;
