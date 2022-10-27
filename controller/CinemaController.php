@@ -179,7 +179,7 @@ class CinemaController {
             ["id" => $id]
         );
         $requete2=$pdo->prepare("
-        SELECT  r.id_role, f.titre, CONCAT(p.prenom,' ',p.nom) AS identite, DATE_FORMAT(f.anneeSortieFrance, '%Y') AS anneeSortie
+        SELECT  f.id_film, a.id_personne, r.id_role, f.titre, CONCAT(p.prenom,' ',p.nom) AS identite, DATE_FORMAT(f.anneeSortieFrance, '%Y') AS anneeSortie
         FROM role r
 		INNER JOIN jouer j ON j.id_role = r.id_role
         INNER JOIN film f ON j.id_film = f.id_film       

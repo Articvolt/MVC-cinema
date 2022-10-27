@@ -19,9 +19,9 @@ $role = $requete->fetch();
         <tbody>
             <?php foreach($requete2->fetchAll() as $roles) { ?>
             <tr>
-                <td><?= $roles["titre"] ?></td>
+                <td><a href="index.php?action=film&id=<?=$roles["id_film"]?>"><?= $roles["titre"] ?></a></td>
                 <td><?= $roles["anneeSortie"] ?></td>
-                <td><?= $roles["identite"] ?></td>
+                <td><a href="index.php?action=acteur&id=<?=$roles["id_personne"]?>"><?= $roles["identite"] ?></a></td>
             </tr>
             <?php } ?>
         </tbody>
