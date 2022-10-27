@@ -4,7 +4,7 @@ ob_start();
 
 <h2>Ajouter un role</h2>
 
-<form action="">
+<form action="index.php?action=addRole" method="post">
     <input type="text" name="nomRole" id="nomRole" placeholder="Ajouter un rôle">
     <input type="submit" name="submit" value="ajouter">
 </form>

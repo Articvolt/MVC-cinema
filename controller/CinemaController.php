@@ -51,7 +51,7 @@ class CinemaController {
     public function listRoles() {
         $pdo=Connect::seConnecter();
         $requete=$pdo->query("
-            SELECT nomRole, id_role
+            SELECT UPPER(nomRole) AS nomRole, id_role
             FROM role
         ");
         require "view/listRoles.php";
@@ -215,7 +215,7 @@ class CinemaController {
                     INSERT INTO genre (nomGenre, photo) VALUES (:nomGenre , :photo)
                 ");
                 $requete->execute([
-                    ":nomGenre" => $nomGenre,
+                    ":nomGenre" => mb_strtoupper($nomGenre),
                     ":photo" => $photo
                 ]);
                 // redirection vers la liste des genres
@@ -226,11 +226,24 @@ class CinemaController {
     }
 
     public function ajoutRole() {
-        $pdo=Connect::seConnecter();
-        $requete=$pdo->prepare("
-
-        ");
-        $requete->execute();
+        if(isset($_POST["submit"])) {
+            // filtres d'assainissement
+            $nomRole = filter_input(INPUT_POST, 'nomRole', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
+            // si les filtres sont valides
+            if($nomRole) {
+                // connexion et insertion (prepare et execute)
+                $pdo=Connect::seConnecter();
+                $requete=$pdo->prepare("
+                    INSERT INTO role (nomRole) VALUES (:nomRole)
+                ");
+                $requete->execute([
+                    ":nomRole" => $nomRole
+                ]);
+                // redirection vers la liste des roles
+                header("Location: index.php?action=listRoles"); die;
+            }
+        }
         require "view/formulaire.php";
     }
 
