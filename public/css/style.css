@@ -91,12 +91,24 @@ figcaption {
 
 .form {
     display: flex;
-    flex-direction: column;
-    width: 300px;
-    align-items: center;
-    margin: auto;
+    flex-direction: column; 
 }
 
+.form-bloc {
+    justify-content: space-evenly;
+    display: flex;
+}
+.form-step {
+    display: flex;
+    flex-direction: column;
+}
 input {
     padding: 10px 20px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.button {
+    border-radius: 5px;
+    margin: auto;
 }
