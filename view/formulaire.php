@@ -96,7 +96,6 @@ ob_start();
         </datalist>
     </div>
     <input type="affiche" name="affiche" id="affiche" placeholder="lien affiche" required>
-    <input type="submit" name="submit" id="button" value="ajouter">
 </form>
 
 

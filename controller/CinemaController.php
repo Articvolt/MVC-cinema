@@ -351,6 +351,7 @@ class CinemaController {
             $synopsis = filter_input(INPUT_POST, 'synopsis', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $duree = filter_input(INPUT_POST, 'duree', FILTER_SANITIZE_NUMBER_INT);
             $note = filter_input(INPUT_POST, 'note', FILTER_SANITIZE_NUMBER_INT);
+            $id_realisateur = filter_input(INPUT_POST, "id_realisateur", FILTER_SANITIZE_NUMBER_INT); 
             $affiche = filter_input(INPUT_POST, 'affiche', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             // si les filtres sont valides
             if($titre && $anneeSortieFrance && $synopsis && $duree && $note && $affiche) {
@@ -358,8 +359,8 @@ class CinemaController {
                 // connexion et insertion (prepare et execute)
                 $pdo=Connect::seConnecter();
                 $requete=$pdo->prepare("
-                INSERT INTO film (titre, anneeSortieFrance, synopsis, duree, note, affiche) 
-                VALUES (:titre, :anneeSortieFrance, :synopsis, :duree, :note, :affiche)
+                INSERT INTO film (titre, anneeSortieFrance, synopsis, duree, note, id_realisateur, affiche) 
+                VALUES (:titre, :anneeSortieFrance, :synopsis, :duree, :note, :id_realisateur, :affiche)
                 ");
                 $requete->execute([
                     ":titre" => $titre,
@@ -367,7 +368,8 @@ class CinemaController {
                     ":synopsis" => $synopsis,
                     ":duree" => $duree,
                     ":note" => $note,
-                    ":affiche" => $affiche
+                    ":affiche" => $affiche,
+                    ":id_realisateur" => $id_realisateur
                 ]);
             }
         }
