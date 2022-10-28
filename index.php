@@ -63,6 +63,9 @@ if(isset($_GET["action"])) {
             case "addRealisateur" :
                 $ctrlCinema->ajoutRealisateur();
             break;
+            case "addFilm" :
+                $ctrlCinema->ajoutFilm();
+            break;
     }
     // PAR DEFAUT
 } else {

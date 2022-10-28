@@ -256,11 +256,13 @@ class CinemaController {
             $sexe = filter_input(INPUT_POST, 'sexe', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $dateNaissance = filter_input(INPUT_POST, 'dateNaissance', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $dateDeces = filter_input(INPUT_POST, 'dateMort', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
             if($dateDeces == '') {
                 $dateDeces = NULL;
             }
             // si les filtres sont valides
             if($nom && $prenom && $sexe && $dateNaissance) {
+
                 // connexion et insertion (prepare et execute)
                 $pdo=Connect::seConnecter();
                 $requete=$pdo->prepare("
@@ -296,17 +298,18 @@ class CinemaController {
     public function ajoutRealisateur() {
         if(isset($_POST["submit"])) {
             // filtres d'assainissement
-            // $photo = filter_input(INPUT_POST, 'photo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $sexe = filter_input(INPUT_POST, 'sexe', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $dateNaissance = filter_input(INPUT_POST, 'dateNaissance', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $dateDeces = filter_input(INPUT_POST, 'dateMort', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
             if($dateDeces == '') {
                 $dateDeces = NULL;
             }
             // si les filtres sont valides
             if($nom && $prenom && $sexe && $dateNaissance) {
+
                 // connexion et insertion (prepare et execute)
                 $pdo=Connect::seConnecter();
                 $requete=$pdo->prepare("
@@ -337,6 +340,38 @@ class CinemaController {
             }
         }
         require "view/formulaire.php";
+    }
+
+    public function ajoutFilm() {
+        if(isset($_POST["submit"])) {
+
+            // filtres d'assainissement
+            $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $anneeSortieFrance = filter_input(INPUT_POST, 'anneeSortieFrance', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $synopsis = filter_input(INPUT_POST, 'synopsis', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $duree = filter_input(INPUT_POST, 'duree', FILTER_SANITIZE_NUMBER_INT);
+            $note = filter_input(INPUT_POST, 'note', FILTER_SANITIZE_NUMBER_INT);
+            $affiche = filter_input(INPUT_POST, 'affiche', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            // si les filtres sont valides
+            if($titre && $anneeSortieFrance && $synopsis && $duree && $note && $affiche) {
+                
+                // connexion et insertion (prepare et execute)
+                $pdo=Connect::seConnecter();
+                $requete=$pdo->prepare("
+                INSERT INTO film (titre, anneeSortieFrance, synopsis, duree, note, affiche) 
+                VALUES (:titre, :anneeSortieFrance, :synopsis, :duree, :note, :affiche)
+                ");
+                $requete->execute([
+                    ":titre" => $titre,
+                    ":anneeSortieFrance" => $anneeSortieFrance,
+                    ":synopsis" => $synopsis,
+                    ":duree" => $duree,
+                    ":note" => $note,
+                    ":affiche" => $affiche
+                ]);
+            }
+        }
+        require  "view/formulaire.php";
     }
 
 }
