@@ -371,9 +371,30 @@ class CinemaController {
                     ":affiche" => $affiche,
                     ":id_realisateur" => $id_realisateur
                 ]);
+
+                $id_film = $pdo->lastInsertId();
+                $requete2=$pdo->prepare("
+                INSERT INTO film (id_film) 
+                VALUES (:id_film)
+                ");
+                $requete2->execute([
+                    'id_film' => $id_film
+                ]);
+
             }
         }
         require  "view/formulaire.php";
+
+    }
+
+    public function getRealisateur() {
+        $pdo=Connect::seConnecter();
+        $requete=$pdo->query("
+            SELECT r.id_personne, CONCAT(p.prenom,' ',p.nom) AS identite, DATE_FORMAT(p.dateNaissance, '%d/%m/%Y') 
+            FROM personne p
+            inner join realisateur r ON p.id_personne = r.id_personne
+            ORDER BY p.dateNaissance DESC
+        ");
     }
 
 }

@@ -84,18 +84,25 @@ ob_start();
     <input type="text" name="titre" id="titre" placeholder="titre" required>
     <input type="date" name="anneeSortieFrance" id="anneeSortieFrance" required>
     <input type="textarea" name="synopsis" id="synopsis" placeholder="synopsis du film" required>
-    <input type="number" name="duree" id="duree" min="1" max="500" required>
-    <div>
-        <input type="range" list="tickmarks" name="note" id="note" placeholder="note" step="1" min="1" max="5" required>
-        <datalist id="tickmarks">
-        <option value="1" label="1"></option>
-        <option value="2" label="2"></option>
-        <option value="3" label="3"></option>
-        <option value="4" label="4"></option>
-        <option value="5" label="5"></option>
-        </datalist>
-    </div>
+    <input type="number" name="duree" id="duree" min="1" max="500" placeholder="duree" required>
+    <label>Note</label>
+    <select name="note" id="note" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
     <input type="affiche" name="affiche" id="affiche" placeholder="lien affiche" required>
+    <select name="id_realisateur">
+        <?php
+            echo "<option value='default'>Par défaut</option>";
+
+                foreach($realisateurs AS $realisateur) {
+                echo "<option value=".$realisateur['id_realisateur'].">".getRealisateur($realisateur['identite'])."</option>";
+                } ?>
+    </select>
+    <input type="submit" name="submit" id="button" value="ajouter">
 </form>
 
 
