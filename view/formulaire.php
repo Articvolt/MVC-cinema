@@ -71,7 +71,7 @@ ob_start();
         <div class="form-step">
             <label for="dateNaissance">Date de naissance : </label>
             <input type="date" name="dateNaissance" id="dateNaissance" required>
-            <label for="dateDeces">date décès : </label>
+            <label for="dateDeces">date décès (optionnel) : </label>
             <input type="date" name="dateMort" id="dateMort">
         </div>
     </div>
@@ -80,7 +80,7 @@ ob_start();
 
 <h2>Ajouter un film</h2>
 
-<form action="index.php?action=addFilm" method="$_POST">
+<form action="index.php?action=addFilm" method="post">
     <input type="text" name="titre" id="titre" placeholder="titre" required>
     <input type="date" name="anneeSortieFrance" id="anneeSortieFrance" required>
     <input type="textarea" name="synopsis" id="synopsis" placeholder="synopsis du film" required>

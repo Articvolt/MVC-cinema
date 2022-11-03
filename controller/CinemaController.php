@@ -353,9 +353,8 @@ class CinemaController {
         if(isset($_POST["submit"])) {
 
             // filtres d'assainissement
-            $titre = ($_POST);
-            // $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            var_dump($titre);
+            
+            $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $anneeSortieFrance = filter_input(INPUT_POST, 'anneeSortieFrance', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $synopsis = filter_input(INPUT_POST, 'synopsis', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $duree = filter_input(INPUT_POST, 'duree', FILTER_SANITIZE_NUMBER_INT);
@@ -363,14 +362,12 @@ class CinemaController {
             $id_realisateur = filter_input(INPUT_POST, "id_realisateur", FILTER_SANITIZE_NUMBER_INT); 
             $affiche = filter_input(INPUT_POST, 'affiche', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             // si les filtres sont valides
-            if($titre && $anneeSortieFrance && $synopsis && $duree && $note && $affiche) {
+            if($titre && $anneeSortieFrance && $synopsis && $duree && $note && $id_realisateur && $affiche) {
+                // var_dump("ok");die;
                 
                 // connexion et insertion (prepare et execute)
                 $pdo=Connect::seConnecter();
-                $requete=$pdo->prepare("
-                INSERT INTO film (titre, anneeSortieFrance, synopsis, duree, note, id_realisateur, affiche) 
-                VALUES (:titre, :anneeSortieFrance, :synopsis, :duree, :note, :id_realisateur, :affiche)
-                ");
+                $requete=$pdo->prepare("INSERT INTO film (titre, anneeSortieFrance, synopsis, duree, note, id_realisateur, affiche) VALUES (:titre, :anneeSortieFrance, :synopsis, :duree, :note, :id_realisateur, :affiche)");
                 $requete->execute([
                     ":titre" => $titre,
                     ":anneeSortieFrance" => $anneeSortieFrance,
@@ -381,15 +378,15 @@ class CinemaController {
                     ":id_realisateur" => $id_realisateur
                 ]);
 
-                $id_film = $pdo->lastInsertId();
-                $requete2=$pdo->prepare("
-                INSERT INTO film (id_film) 
-                VALUES (:id_film)
-                ");
-                $requete2->execute([
-                    'id_film' => $id_film
-                ]);
-
+                // $id_film = $pdo->lastInsertId();
+                // $requete2=$pdo->prepare("
+                // INSERT INTO film (id_film) 
+                // VALUES (:id_film)
+                // ");
+                // $requete2->execute([
+                //     'id_film' => $id_film
+                // ]);
+                header("Location: index.php?action=listFilms"); die;
             }
         }
         require  "view/formulaire.php";
