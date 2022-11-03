@@ -99,7 +99,7 @@ ob_start();
             echo "<option value='default'>Par défaut</option>";
 
                 foreach($realisateurs AS $realisateur) {
-                echo "<option value=".$realisateur['id_realisateur'].">".getRealisateur($realisateur['identite'])."</option>";
+                echo "<option value=".$realisateur['id_realisateur'].">".$realisateur['identite']."</option>";
                 } ?>
     </select>
     <input type="submit" name="submit" id="button" value="ajouter">

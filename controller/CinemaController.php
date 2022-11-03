@@ -196,6 +196,13 @@ class CinemaController {
     // FORMULAIRE
 
     public function formulaire() {
+        $pdo=Connect::seConnecter();
+        $realisateurs=$pdo->prepare("
+            SELECT r.id_realisateur, CONCAT(p.prenom,' ',p.nom) AS identite
+            FROM personne p
+            inner join realisateur r ON p.id_personne = r.id_personne
+            ");
+            $realisateurs->execute();
         require "view/formulaire.php";
     }
 
@@ -346,7 +353,9 @@ class CinemaController {
         if(isset($_POST["submit"])) {
 
             // filtres d'assainissement
-            $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $titre = ($_POST);
+            // $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            var_dump($titre);
             $anneeSortieFrance = filter_input(INPUT_POST, 'anneeSortieFrance', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $synopsis = filter_input(INPUT_POST, 'synopsis', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $duree = filter_input(INPUT_POST, 'duree', FILTER_SANITIZE_NUMBER_INT);
@@ -386,15 +395,4 @@ class CinemaController {
         require  "view/formulaire.php";
 
     }
-
-    public function getRealisateur() {
-        $pdo=Connect::seConnecter();
-        $requete=$pdo->query("
-            SELECT r.id_personne, CONCAT(p.prenom,' ',p.nom) AS identite, DATE_FORMAT(p.dateNaissance, '%d/%m/%Y') 
-            FROM personne p
-            inner join realisateur r ON p.id_personne = r.id_personne
-            ORDER BY p.dateNaissance DESC
-        ");
-    }
-
 }
